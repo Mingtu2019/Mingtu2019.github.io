@@ -15,10 +15,7 @@
     <script src="./paper_files/weui.min.js"></script>
     <script src="./paper_files/app.js"></script>
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-    <link rel="stylesheet" href="./paper_files/helper.css">
-    <link rel="stylesheet" href="./paper_files/main_vue.css">
-
-    <title>移动学工用户中心</title>
+    <title>**移动学工用户中心</title>
     <style>
         .fixed-header,
         .fixed-header+header.row.m-0,
@@ -71,191 +68,128 @@
             </nav>
         </div>
         <div class="page vue-loading" style="position: absolute;overflow-y: auto">
-            <div id="content">
-                <header class="row m-0 fixed-header">
-                    <div class="left">
-                        <a href="./back.html" onclick="history.back()"><i class="la la-arrow-left"></i></a>
-                    </div>
-                    <div class="col center">
-                        <a href="javascript:void(0);" class="logo">
-                            出示假条
-                        </a>
-                    </div>
+            <style type="text/css">
+                .page {
+                    background: #fff
+                }
 
+                .cell-btn {
+                    display: inline-block;
+                    margin: 10px 0;
+                    height: 55px;
+                    width: 55px;
+                    line-height: 55px;
+                    border-radius: 18%;
+                    color: rgb(0, 150, 136);
+                    background: #fff;
+                    box-shadow: 0 0 10px rgb(0 0 0 / 11%);
+                }
 
-                </header>
-                <div class="page-content">
-                    <div style="padding:0 15px;">
-                        <div class="card mt-15">
-                            <div class="card-body ">
-                                <div class="card-text relative text-dark">
-                                    <p class="h2 text-center text-dark font-weight-light">
-                                        请假条
-                                    </p>
-
-                                    <img id="approved_icon" src="./paper_files/approved.png" alt=""
-                                        style="animation: 0.3s ease-in 0s 1 normal none running stamp; display: inline;">
-
-                                    <div class="row mt-30 mb-20">
-                                        <div class="col d-flex flex-column justify-content-center align-items-center">
-                                            <figure class="figure mb-0">
-                                                <img class="figure-img img-fluid rounded"
-                                                    src="./paper_files/123456.jpg" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="col d-flex flex-column justify-content-center pl-0">
-                                            <p class="h5 mb-15 mt-5 text-dark"><span class="h6">姓名：</span></p>
-                                            <p class="h6 mb-10 font-weight-normal">性别：</p>
-                                            <p class="h6 mb-10 font-weight-normal">院系：</p>
-                                            <p class="h6 mb-10 font-weight-normal">学号：</p>
-                                        </div>
-                                    </div>
-
-                                    <div id="qrcode_box" class="mv-20 text-center relative" style="display: none">
-                                        <div id="qrcode_img"></div>
-                                        <div id="qrcode_loading"><i class="la la-refresh la-spin"></i></div>
-                                        <div class="mt-10 text-danger font-12">
-                                            有效期5分钟，到期后请
-                                            <a href="javascript:" onclick="refreshQrCode()"><i
-                                                    class="la la-refresh"></i> 刷新</a>
-                                        </div>
-                                    </div>
-
-                                    <p class="h6 font-weight-normal">请假时间</p>
-                                    <table class="table time-table text-center">
-                                        <tbody>
-                                            <tr>
-                                                <th>起</th>
-                                                <td>
-                                                    <p class="h3 font-weight-light text-dark">***</p>
-                                                </td>
-                                                <th><span class="invisible">起</span></th>
-                                            </tr>
-                                            <tr>
-                                                <th>至</th>
-                                                <td>
-                                                    <p class="h3 font-weight-light text-dark">***</p>
-                                                </td>
-                                                <th><span class="invisible">至</span></th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <div class="text-center text-danger mt-20 mb--10 font-24">离校不出市</div>
-
-                                    <div class="text-center">
-                                        <table class="table bottom-table table-sm table-borderless mt-30">
-                                            <tbody>
-                                                <tr>
-                                                    <th>审批人：</th>
-                                                    <td class="text-dark">***</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>批准时间：</th>
-                                                    <td class="text-dark">***</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="text-center mt-20 mb-30">
-                            <a href="javascript:" class="link p-10" onclick="backToSchool()">
-                                点击返校
-                                <i class="la la-angle-right"></i>
-                            </a>
-                        </div>
-
-                        <style>
-                            .time-table th,
-                            .bottom-table th {
-                                font-weight: normal;
-                                color: #666;
-                                text-align: right;
-                                vertical-align: middle;
-                            }
-
-                            .time-table td {
-                                width: 220px;
-                            }
-
-                            .time-table p {
-                                margin-bottom: 0 !important;
-                            }
-
-                            .time-table {
-                                border-bottom: 1px solid #dee2e6;
-                            }
-
-                            .bottom-table {
-                                width: auto;
-                                font-size: 16px;
-                                text-align: left;
-                                margin: 0 auto;
-                            }
-
-                            #approved_icon {
-                                position: absolute;
-                                right: -15px;
-                                top: -15px;
-                                width: 110px;
-                                z-index: 100;
-                                display: none;
-                            }
-
-                            .bg-light-danger {
-                                background-color: rgba(255, 0, 0, 0.15);
-                            }
-
-                            @keyframes stamp {
-                                from {
-                                    right: -90px;
-                                    width: 200px;
-                                    opacity: 0.5;
-                                }
-
-                                to {
-                                    right: -15px;
-                                    width: 110px;
-                                    opacity: 1;
-                                }
-                            }
-                        </style>
-
-                        <script type="text/javascript" src="./paper_files/jquery.qrcode.min.js"></script>
-                        <script>
-                            $('#approved_icon').css({
-                                animation: '0.3s ease-in stamp'
-                            }).show();
-
-                            function backToSchool() {
-                                weui.confirm('是否出示返校卡？出示后无法撤销返校状态！', function () {
-                                    location.href = '';
-                                });
-                            }
-
-                        </script>
+                .cell-btn i {
+                    line-height: 55px;
+                    font-size: 33px;
+                }
+            </style>
+            <header class="row m-0 fixed-header">
+                <div class="left"><a href=""><i class="la la-arrow-left"
+                            style="font-size: 1.5rem;line-height:44px;"></i></a></div>
+                <div class="col center"><a href="javascript:void(0);" class="logo">*学院 ****级</a></div>
+                <div class="right auto">
+                    <a href=""><i class="la la-user" style="font-size: 1.5rem;"></i></a>
+                </div>
+            </header>
+            <div class="page-content">
+                <div class="card favorite-list" style="margin-bottom: 20px; display: none;">
+                    <div class="card-body" style="padding:.5rem;overflow: hidden;">
+                        <h2 class="block-title mb-2 mt-2 ">最常使用</h2>
+                        <div class="row"></div>
                     </div>
                 </div>
+                <div class="card-body menu-list" style="padding:.5rem 1.5rem;overflow: hidden;background: #fff"
+                    id="cmarea">
+                    <div id="navpod" class="row"></div>
+                    <h2 class="block-title mb-0 mt-2 ">日常</h2>
+                    <div class="row mb-4">
+                        <div class="col-3 text-center cell" style="padding:10px 0">
+                            <a href="" data-id="messages" onclick="countFavoriteLink(this)">
+                                <div class="cell-btn">
+                                    <i class="la la-comments" style="color:#2f54eb"></i>
+                                </div>
+                                <div style="color:#666;font-size:12px;white-space: nowrap;">消息</div>
+                            </a>
+                        </div>
+                        <div class="col-3 text-center cell" style="padding:10px 0">
+                            <a href="./back_.html" data-id="leaves" onclick="countFavoriteLink(this)">
+                                <div class="cell-btn">
+                                    <i class="la la-paper-plane" style="color:#722ed1"></i>
+                                </div>
+                                <div style="color:#666;font-size:12px;white-space: nowrap;">请假</div>
+                            </a>
+                        </div>
+                        <div class="col-3 text-center cell" style="padding:10px 0">
+                            <a href="" data-id="" onclick="countFavoriteLink(this)">
+                                <div class="cell-btn">
+                                    <i class="la la-wrench" style="color:#eb2f96"></i>
+                                </div>
+                                <div style="color:#666;font-size:12px;white-space: nowrap;">个人设置</div>
+                            </a>
+                        </div>
+                        <div class="col-3 text-center cell" style="padding:10px 0">
+                            <a href="" data-id="" onclick="countFavoriteLink(this)">
+                                <div class="cell-btn">
+                                    <i class="la la-check-circle" style="color:#52c41a"></i>
+                                </div>
+                                <div style="color:#666;font-size:12px;white-space: nowrap;">考勤签到</div>
+                            </a>
+                        </div>
+                    </div>
+                    <h2 class="block-title mb-0 mt-2 ">办理</h2>
+                    <div class="row mb-4">
+                        <div class="col-3 text-center cell" style="padding:10px 0">
+                            <a href="" data-id="profiles6099" onclick="countFavoriteLink(this)">
+                                <div class="cell-btn">
+                                    <i class="las la-calendar-plus" style="color:#2f54eb"></i>
+                                </div>
+                                <div style="color:#666;font-size:12px;white-space: nowrap;">每日健康打卡</div>
+                            </a>
+                        </div>
+                        <div class="col-3 text-center cell" style="padding:10px 0">
+                            <a href="" data-id="profiles5297" onclick="countFavoriteLink(this)">
+                                <div class="cell-btn">
+                                    <i class="la la-list-alt" style="color:#722ed1"></i>
+                                </div>
+                                <div style="color:#666;font-size:12px;white-space: nowrap;">假期离市报备</div>
+                            </a>
+                        </div>
+                        <div class="col-3 text-center cell" style="padding:10px 0">
+                            <a href="" data-id="steps" onclick="countFavoriteLink(this)">
+                                <div class="cell-btn">
+                                    <i class="las la-school" style="color:#eb2f96"></i>
+                                </div>
+                                <div style="color:#666;font-size:12px;white-space: nowrap;">返校申请</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <script id="tpl_navpod_item" type="text/html">
+        <div class="col-3 text-center cell" style="padding:10px 0">
+            <a href="<%=url %>" data-id="<%=item.id %>" onclick="countFavoriteLink(this)">
+                <div>
+                    <div class="cell-btn" style="color: red"><i class="<%=(item.icon?item.icon:'las la-star') %>"></i>
+                    </div>
+                </div>
+                <div style="color:#555;font-size:12px"><%=item.name %></div>
+            </a>
+        </div>
+    </script>
+                <script>$(function () { navpod(123456, 'student'); }); var sc = { i: '123456' }; var extmenu = null;</script>
             </div>
         </div>
+
+        <script src="./paper_files/bootstrap.bundle.min.js"></script>
+        <script src="./paper_files/main.js"></script>
+
     </div>
-
-    <script src="./paper_files/bootstrap.bundle.min.js"></script>
-    <script src="./paper_files/main.js"></script>
-    <script src="./paper_files/lodash.min.js"></script>
-
-    <script src="./paper_files/vue.min.js"></script>
-
-    <script src="./paper_files/uuid.min.js"></script>
-    <script src="./paper_files/linq.min.js"></script>
-    <script src="./paper_files/vuelidate.min.js"></script>
-    <script src="./paper_files/validators.min.js"></script>
-    <script src="./paper_files/main_vue_4m2019.js"></script>
-
-
 </body>
 
 </html>
